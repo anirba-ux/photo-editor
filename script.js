@@ -131,6 +131,11 @@ const closeSidebarBtn =
 const overlay =
   document.getElementById("overlay")
 
+  const doneCropBtn =
+  document.getElementById(
+    "doneCropBtn"
+  )
+
 // ==========================================
 // IMAGE VARIABLES
 // ==========================================
@@ -858,6 +863,34 @@ function endCrop() {
 
   cropData.dragging = false
 }
+
+// ==========================================
+// DONE CROP
+// ==========================================
+
+doneCropBtn.addEventListener(
+  "click",
+  () => {
+
+    if(cropData.active){
+
+      performCrop()
+
+      cropData.active = false
+
+      mobilePopup.classList.remove(
+        "show"
+      )
+
+      mobileCropOptions.classList.remove(
+        "show"
+      )
+
+      menuButtons.style.display =
+        "flex"
+    }
+  }
+)
 
 // ==========================================
 // CANVAS EVENTS
