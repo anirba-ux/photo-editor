@@ -131,9 +131,19 @@ const closeSidebarBtn =
 const overlay =
   document.getElementById("overlay")
 
-  const doneCropBtn =
+ const mobilePopup =
   document.getElementById(
-    "doneCropBtn"
+    "mobilePopup"
+  )
+
+const mobileCropOptions =
+  document.getElementById(
+    "mobileCropOptions"
+  )
+
+const menuButtons =
+  document.getElementById(
+    "menuButtons"
   )
 
 // ==========================================
@@ -872,19 +882,29 @@ doneCropBtn.addEventListener(
   "click",
   () => {
 
-    if(cropData.active){
+    if (!cropData.active) return
 
-      performCrop()
+    performCrop()
 
-      cropData.active = false
+    cropData.active = false
+
+    // MOBILE UI RESET
+
+    if (mobilePopup) {
 
       mobilePopup.classList.remove(
         "show"
       )
+    }
+
+    if (mobileCropOptions) {
 
       mobileCropOptions.classList.remove(
         "show"
       )
+    }
+
+    if (menuButtons) {
 
       menuButtons.style.display =
         "flex"
