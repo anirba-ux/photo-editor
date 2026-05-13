@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>AI Photo Editor</title>
+
+  <!-- REMIX ICON -->
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="theme.css" />
+
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+  <!-- OVERLAY -->
+
+  <div id="overlay"></div>
+
+  <main>
+
+    <!-- ===================================== -->
+    <!-- MOBILE HEADER -->
+    <!-- ===================================== -->
+
+    <header class="mobile-header">
+
+  <h2>AI Photo Editor</h2>
+
+  <div class="mobile-actions">
+
+    <!-- MENU BUTTON -->
+
+    <button
+      id="menuBtn"
+      class="icon-btn"
+    >
+
+      <i class="ri-menu-3-line"></i>
+
+    </button>
+
+    <!-- FILTER -->
+
+    <button
+      id="filterBtn"
+      class="icon-btn"
+    >
+
+      <i class="ri-equalizer-line"></i>
+
+    </button>
+
+    <!-- PRESET -->
+
+    <button
+      id="presetBtn"
+      class="icon-btn"
+    >
+
+      <i class="ri-magic-line"></i>
+
+    </button>
+
+  </div>
+
+</header>
+
+    <!-- ===================================== -->
+    <!-- MAIN SECTION -->
+    <!-- ===================================== -->
+
+    <section>
+
+      <!-- ===================================== -->
+      <!-- LEFT SIDE -->
+      <!-- ===================================== -->
+
+      <div class="left">
+
+        <!-- TOP BUTTONS -->
+
+        <div class="top-buttons" id="mobileMenu">
+
+          <!-- CHOOSE IMAGE -->
+
+          <label
+            for="image-input"
+            class="btn choose-btn"
+          >
+
+            <i class="ri-image-add-line"></i>
+
+            Choose Image
+
+            <input
+              type="file"
+              id="image-input"
+              accept="image/*"
+              hidden
+            />
+
+          </label>
+
+          <!-- RESET -->
+
+          <button
+            class="btn"
+            id="reset-btn"
+          >
+
+            <i class="ri-refresh-line"></i>
+
+            Reset
+
+          </button>
+
+          <!-- DOWNLOAD -->
+
+          <button
+            class="btn"
+            id="download-btn"
+          >
+
+            <i class="ri-download-line"></i>
+
+            Download
+
+          </button>
+
+          <!-- CROP -->
+
+          <button
+            class="btn"
+            id="cropBtn"
+          >
+
+            <i class="ri-crop-line"></i>
+
+            Crop
+
+          </button>
+
+          <!-- BG REMOVE -->
+
+          <button
+            class="btn"
+            id="background-remover"
+          >
+
+            <i class="ri-ai-generate"></i>
+
+            BG Remove
+
+          </button>
+
+        </div>
+
+        <!-- ===================================== -->
+        <!-- CROP MENU -->
+        <!-- ===================================== -->
+
+        <div id="cropMenu">
+
+          <!-- MANUAL CROP -->
+
+          <button
+            class="btn"
+            id="manualCrop"
+          >
+
+            Manual Crop
+
+          </button>
+
+          <!-- PRESET CROPS -->
+
+          <button
+            class="btn crop-preset"
+            id="instaPost"
+          >
+
+            1:1
+
+          </button>
+
+          <button
+            class="btn crop-preset"
+            id="youtubeVideo"
+          >
+
+            16:9
+
+          </button>
+
+          <button
+            class="btn crop-preset"
+            id="instaPortrait"
+          >
+
+            4:5
+
+          </button>
+
+          <button
+            class="btn crop-preset"
+            id="dslrPhoto"
+          >
+
+            3:2
+
+          </button>
+
+          <button
+            class="btn crop-preset"
+            id="instaReel"
+          >
+
+            9:16
+
+          </button>
+
+        </div>
+
+        <!-- ===================================== -->
+        <!-- CANVAS -->
+        <!-- ===================================== -->
+
+        <div class="canvas-wrapper">
+
+          <!-- PLACEHOLDER -->
+
+          <div class="placeholder">
+
+            <i class="ri-image-line"></i>
+
+            <p>No image selected</p>
+
+          </div>
+
+          <!-- CANVAS -->
+
+          <canvas id="image-canvas"></canvas>
+
+        </div>
+
+      </div>
+
+      <!-- ===================================== -->
+      <!-- RIGHT SIDEBAR -->
+      <!-- ===================================== -->
+
+      <div class="right">
+
+        <!-- SIDEBAR TOP -->
+
+        <div class="sidebar-top">
+
+          <h3>Editor Panel</h3>
+
+          <!-- CLOSE BUTTON -->
+
+          <button
+            id="closeSidebar"
+            class="icon-btn"
+          >
+
+            <i class="ri-close-line"></i>
+
+          </button>
+
+        </div>
+
+        <!-- ===================================== -->
+        <!-- FILTER SECTION -->
+        <!-- ===================================== -->
+
+        <div class="filter-section">
+
+          <div class="title">
+
+            <i class="ri-equalizer-line"></i>
+
+            <h3>Filters</h3>
+
+          </div>
+
+          <!-- FILTERS -->
+
+          <div class="filters"></div>
+
+        </div>
+
+        <!-- ===================================== -->
+        <!-- PRESET SECTION -->
+        <!-- ===================================== -->
+
+        <div class="preset-section">
+
+          <div class="title">
+
+            <i class="ri-magic-line"></i>
+
+            <h3>Presets</h3>
+
+          </div>
+
+          <!-- PRESETS -->
+
+          <div class="presets"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- SCRIPT -->
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
