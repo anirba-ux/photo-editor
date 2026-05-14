@@ -148,6 +148,14 @@ const menuButtons =
     "menuButtons"
   )
 
+  const chooseBtn = document.querySelector(".choose-btn");
+
+if (chooseBtn) {
+  chooseBtn.addEventListener("click", () => {
+    mobileMenu.classList.remove("show");
+  });
+}
+
 // ==========================================
 // IMAGE VARIABLES
 // ==========================================
@@ -738,18 +746,26 @@ Object.keys(presets).forEach(
 )
 
 // ==========================================
-// CROP MENU TOGGLE
+// CROP MENU TOGGLE (UPDATED)
 // ==========================================
 
 cropBtn.addEventListener(
   "click",
   () => {
 
-    cropMenu.classList.toggle(
-      "show"
-    )
+    // 1️⃣ mobile main menu বন্ধ করো
+    mobileMenu.classList.remove("show");
+
+    // 2️⃣ sidebar বন্ধ করো (optional but clean UI)
+    closeSidebar();
+
+    // 3️⃣ crop menu toggle
+    cropMenu.classList.toggle("show");
+
+    // 4️⃣ optional mode flag
+    document.body.classList.toggle("crop-mode");
   }
-)
+);
 
 // ==========================================
 // MANUAL CROP
@@ -886,46 +902,58 @@ function endCrop() {
   cropData.dragging = false
 }
 
-// ==========================================
-// DONE CROP
-// ==========================================
-
 doneCropBtn.addEventListener(
   "click",
   () => {
 
-    if (!cropData.active) return
+    if (!cropData.active) return;
 
-    performCrop()
+    // 1️⃣ crop apply
+    performCrop();
 
-    cropData.active = false
+    // 2️⃣ stop crop mode
+    cropData.active = false;
+    cropData.dragging = false;
 
-    // HIDE button after crop
+    // 3️⃣ hide crop menu
+    cropMenu.classList.remove("show");
+
+    // 4️⃣ clean UI state
+    document.body.classList.remove("crop-mode");
+  }
+);
+
+const closeCropMenuBtn = document.getElementById("closeCropMenu");
+
+if (closeCropMenuBtn) {
+  closeCropMenuBtn.addEventListener("click", () => {
+
+    // 1️⃣ crop mode off
+    cropData.active = false;
+    cropData.dragging = false;
+
+    // 2️⃣ crop preview reset
+    applyFilters();
+
+    // 3️⃣ hide crop menu
+    cropMenu.classList.remove("show");
+
+    // 4️⃣ hide done button
     doneCropBtn.classList.remove("show");
 
-    // MOBILE UI RESET
+    // 5️⃣ optional UI reset
+    document.body.classList.remove("crop-mode");
+
+    // 6️⃣ optional mobile UI reset
+    if (mobileCropOptions) {
+      mobileCropOptions.classList.remove("show");
+    }
 
     if (mobilePopup) {
-
-      mobilePopup.classList.remove(
-        "show"
-      )
+      mobilePopup.classList.remove("show");
     }
-
-    if (mobileCropOptions) {
-
-      mobileCropOptions.classList.remove(
-        "show"
-      )
-    }
-
-    if (menuButtons) {
-
-      menuButtons.style.display =
-        "flex"
-    }
-  }
-)
+  });
+}
 
 // ==========================================
 // CANVAS EVENTS

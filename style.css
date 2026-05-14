@@ -529,6 +529,26 @@ canvas{
     bottom:0;
   }
 
+  #cropMenu{
+  position: relative;
+}
+
+  .close-btn{
+  position: absolute;
+  top: 3px;
+  right: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  font-size: 25px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
   /* =========================
      SIDEBAR TOP
   ========================= */
