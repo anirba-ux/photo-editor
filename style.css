@@ -399,8 +399,8 @@ canvas{
 }
 
  #doneCropBtn.show{
-    display: block;
-  }
+  display: block !important;
+}
 
   /* =========================
      MOBILE HEADER

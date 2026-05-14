@@ -131,6 +131,8 @@ const closeSidebarBtn =
 const overlay =
   document.getElementById("overlay")
 
+const doneCropBtn = document.getElementById("doneCropBtn")
+
  const mobilePopup =
   document.getElementById(
     "mobilePopup"
@@ -492,7 +494,7 @@ resetBtn.addEventListener(
 
     cropData.active = false
 
-    doneCropBtn.classList.remove("show");
+    
   }
 )
 
@@ -766,19 +768,7 @@ const cropData = {
   endY: 0
 }
 
-// manualCropBtn.addEventListener(
-//   "click",
-//   () => {
 
-//     if (!image) return
-
-//     cropData.active = true
-
-//     alert(
-//       "Drag on image and press ENTER"
-//     )
-//   }
-// )
 
 manualCropBtn.addEventListener(
   "click",
@@ -788,12 +778,15 @@ manualCropBtn.addEventListener(
 
     cropData.active = true;
 
-    // SHOW done button only on mobile
-    if (window.innerWidth <= 768) {
-      doneCropBtn.classList.add("show");
-    }
-
     alert("Drag on image and press ENTER");
+
+    // 👉 safer condition
+    requestAnimationFrame(() => {
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        doneCropBtn.classList.add("show");
+      }
+    });
+
   }
 );
 
@@ -1113,6 +1106,8 @@ function performCrop() {
   }
 
   cropData.active = false
+
+  doneCropBtn.classList.remove("show");
 }
 
 // ==========================================
