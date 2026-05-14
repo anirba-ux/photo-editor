@@ -491,6 +491,8 @@ resetBtn.addEventListener(
     applyFilters()
 
     cropData.active = false
+
+    doneCropBtn.classList.remove("show");
   }
 )
 
@@ -764,19 +766,36 @@ const cropData = {
   endY: 0
 }
 
+// manualCropBtn.addEventListener(
+//   "click",
+//   () => {
+
+//     if (!image) return
+
+//     cropData.active = true
+
+//     alert(
+//       "Drag on image and press ENTER"
+//     )
+//   }
+// )
+
 manualCropBtn.addEventListener(
   "click",
   () => {
 
-    if (!image) return
+    if (!image) return;
 
-    cropData.active = true
+    cropData.active = true;
 
-    alert(
-      "Drag on image and press ENTER"
-    )
+    // SHOW done button only on mobile
+    if (window.innerWidth <= 768) {
+      doneCropBtn.classList.add("show");
+    }
+
+    alert("Drag on image and press ENTER");
   }
-)
+);
 
 // ==========================================
 // POINTER POSITION
@@ -887,6 +906,9 @@ doneCropBtn.addEventListener(
     performCrop()
 
     cropData.active = false
+
+    // HIDE button after crop
+    doneCropBtn.classList.remove("show");
 
     // MOBILE UI RESET
 
