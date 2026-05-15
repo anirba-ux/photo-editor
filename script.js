@@ -1280,11 +1280,20 @@ backgroundRemoverBtn.addEventListener(
   "click",
   async () => {
 
+    // ✅ MOBILE MENU CLOSE
+    mobileMenu.classList.remove("show");
+
+    // ✅ OPTIONAL:
+    // crop menu বন্ধ করতে চাইলে
+    cropMenu.classList.remove("show");
+
+    // ✅ OPTIONAL:
+    // sidebar বন্ধ করতে চাইলে
+    closeSidebar();
+
     if (!image) {
 
-      alert(
-        "Upload image first"
-      )
+      alert("Upload image first")
 
       return
     }
@@ -1323,7 +1332,7 @@ backgroundRemoverBtn.addEventListener(
 
             headers: {
               "X-Api-Key":
-                "7kLH9nYNQW5LzQ3sR9v47dpS "
+                "7kLH9nYNQW5LzQ3sR9v47dpS"
             },
 
             body: formData
@@ -1332,18 +1341,14 @@ backgroundRemoverBtn.addEventListener(
 
       if (!response.ok) {
 
-        throw new Error(
-          "Failed"
-        )
+        throw new Error("Failed")
       }
 
       const resultBlob =
         await response.blob()
 
       const url =
-        URL.createObjectURL(
-          resultBlob
-        )
+        URL.createObjectURL(resultBlob)
 
       const newImg =
         new Image()
@@ -1370,9 +1375,7 @@ backgroundRemoverBtn.addEventListener(
 
       console.log(err)
 
-      alert(
-        "Background remove failed"
-      )
+      alert("Background remove failed")
 
       backgroundRemoverBtn.innerText =
         "Background Remove"
